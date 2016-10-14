@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman Game</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+	//first enter a prompt
+	var name = prompt("What's your name?");
+	console.log("Hello" +name);
+
+	//create an array of words to be used as the source of the secret work, and save the array in the words variable
+	var words = ["javascript", "monkey","amazing","pancake"];
+
+	//use Math.random and Math.floor to pick a random word from the array
+	var word = words[Math.floor(Math.random()*words.length)];
+
+	//create an empty array called answerArray and fill it with underscores to match the number of letters in the word.
+	 var answerArray=[];
+	 for (var i =0;i<word.length;i++){
+	 	answerArray[i] = "_";
+	 }
+
+	 //create variable remainingLetters and set it to the length of the secret word.
+	 //We will use this variablet to keep track of how many letters are left to be guessed.
+	 //every time player guesses a correct letter, this value will be decremented by 1
+	 var remainingLetters = word.length;
+
+	 //start of game loop
+while (remainingLetters > 0) {
+// Show the player their progress
+	alert(answerArray.join(" "));
+
+	 //Handling the Player's input
+	 //get a guess from the player and ensure is a single character
+	 var guess= prompt("Guess a letter, or click Cancel to stop playing.");
+	 if(guess===null){ 
+	  break;
+	   //ILLEGAL BREAK STATEMENT-NOT WORKING!!!!
+	   //if player clicks cancel, then condition is true, and we use break to exit loop
+	 	
+	}else if (guess.length !==1) { 
+		//LINE 44 UNEPECTED TOKEN !!!!!
+	 	alert("Please enter a single letter.");
+	 }else{
+	 //show player their current progress
+	 	for (var j=0;j<word.length;j++){
+	 		if (word[j]===guess){
+	 			answerArray[j]=guess;
+	 			remainingLetters--;
+	 		}
+	 	}
+	 }
+	 
+
+	 	
+	 
+	 	</script>
+</body>
+</html>
